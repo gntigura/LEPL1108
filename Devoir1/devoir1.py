@@ -34,14 +34,14 @@ def devoir1(trajets_train, durees_train, ville_depart, durees_voldirect, sacrifi
     for _ in range(len(d)-1):
         for i in d:
             for j,k in d[i].items():
-                if report[i] != float('inf') and report[i] + k < report[j]:
+                if report[i] != float('inf') and report[i] + k + 15 < report[j]:
                     report[j] = report[i] + k + 15
     for k in report.values():
         min_distances_train.append(k + 15)
     min_distances_train.pop(-1)
     ville.pop(-1)
 
-    for t in range(len(min_distances_avion)):
-        if min_distances_train[t] <= min_distances_avion[t] + sacrifice:
+    for train,avion in zip(min_distances_train, min_distances_avion):
+        if train <= avion + sacrifice:
             count_train += 1
     return ville, min_distances_train, min_distances_avion, count_train
