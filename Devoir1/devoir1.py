@@ -45,3 +45,6 @@ def devoir1(trajets_train, durees_train, ville_depart, durees_voldirect, sacrifi
         if train <= avion + sacrifice:
             count_train += 1
     return ville, min_distances_train, min_distances_avion, count_train
+
+
+print('Aude')
