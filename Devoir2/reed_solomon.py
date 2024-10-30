@@ -56,10 +56,10 @@ class ReedSolomon():
 		P = [] 
 		for k in range(self.k):
 			P.append([])
-			P[k].append(self.t.toBinary(1)); cnt = 0; P[k].append(X[k]); sum = self.f.multiply(X[k], X[k], self.pol)
-			while cnt != self.k-2:
+			P[k].append(self.t.toBinary(1)); P[k].append(X[k]); sum = self.f.multiply(X[k], X[k], self.pol)
+			for _ in range(self.k-2):
 				P[k].append(sum)
-				sum = self.f.multiply(sum, X[k], self.pol); cnt+=1
+				sum = self.f.multiply(sum, X[k], self.pol)
 			P[k].append(AX[k])
 
 		for i in range(self.k):
